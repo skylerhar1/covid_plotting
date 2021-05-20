@@ -8,7 +8,8 @@ def read_in_data(filename):
     filename: path to file name: e.g. /home/shared_data/covid-19-data/rolling-averages/us-states.csv
     OUTPUT: Pandas dataframe - converted from csv input
     '''
-    ...
+    dataframe = pd.read_csv(filename)
+    return dataframe
 def get_extreme_states(df, num_states):
      '''
     INPUT: 
@@ -19,8 +20,7 @@ def get_extreme_states(df, num_states):
     low_states: states with lowest covid cases
     high_states: states with highest covid cases
     '''
-    ...
-          
+    df.groupy('state').cases.agg(['min', 'max'])
 def make_plot(df,states_to_plot):
      '''
     INPUT: 
