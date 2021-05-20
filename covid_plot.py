@@ -22,20 +22,17 @@ def get_extreme_states(df, num_states):
     '''
     import pandas as pd
 
-
-
     mean_df = df.groupby('state').cases_avg_per_100k.agg(['mean'])
+    largest_states = mean_df.nlargest(3,'mean')
+    smallest_states = mean_df.nsmallest(3,'mean')
+    
+    largest_states.reset_index(inplace=True)
+    largest_states = largest_states.rename(columns = {'index':'state'})
+    smallest_states.reset_index(inplace=True)
+    smallest_states = smallest_states.rename(columns = {'index':'state'})
 
-    max_mean = (mean_df['mean'].agg(['max']))[0]
-    max_state = mean_df[mean_df['mean']==max_mean]
-
-    min_mean = (mean_df['mean'].agg(['min']))[0]
-    min_state = mean_df[mean_df['mean']==min_mean]
-    print(max_state)
-    print(min_state)
-    df.drop['']
-    #print(mean_df)
-    return [max_state,min_state]
+    return([smallest_states.state,largest_states.state])
+    
 def make_plot(df,states_to_plot):
      '''
     INPUT: 
