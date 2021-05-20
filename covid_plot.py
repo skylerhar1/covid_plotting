@@ -1,6 +1,6 @@
-
 import pandas as pd
 import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
 '''
 INPUT: 
 filename: path to file name: e.g. /home/shared_data/covid-19-data/rolling-averages/us-states.csv
@@ -47,6 +47,8 @@ def make_plot(df,states_to_plot):
     ax.set_xlabel("date")
     ax.set_ylabel("cases per 100K")
     ax.legend(states_to_plot)
+    ax.spines['right'].set_visible(False)
+    ax.spines['top'].set_visible(False)
     return ax
     
 '''
@@ -56,8 +58,4 @@ ax: handle to current plot
 
 '''
 def modify_plot(ax,states_to_plot):
-
     
-    ...
-  
-   
