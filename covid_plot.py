@@ -46,8 +46,8 @@ def make_plot(df,states_to_plot):
         date=pd.to_datetime(state1.date)
         ax.plot(date,state1.cases_avg_per_100k)
     ax.set_xlabel("Date")
-    ax.set_ylabel("COVID infections per 100K")
-    ax.legend(states_to_plot)
+    ax.set_ylabel("Average COVID infections per 100K")
+    ax.legend(states_to_plot,loc='upper left')
     ax.spines['right'].set_visible(False)
     ax.spines['top'].set_visible(False)
     return ax
