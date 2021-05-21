@@ -43,9 +43,10 @@ def make_plot(df,states_to_plot):
     ax = plt.axes()
     for i in states_to_plot:
         state1 = df[df.state == i]
-        ax.plot(state1.date,state1.cases_avg_per_100k)
-    ax.set_xlabel("date")
-    ax.set_ylabel("cases per 100K")
+        date=pd.to_datetime(state1.date)
+        ax.plot(date,state1.cases_avg_per_100k)
+    ax.set_xlabel("Date")
+    ax.set_ylabel("COVID infections per 100K")
     ax.legend(states_to_plot)
     ax.spines['right'].set_visible(False)
     ax.spines['top'].set_visible(False)
@@ -58,4 +59,7 @@ ax: handle to current plot
 
 '''
 def modify_plot(ax,states_to_plot):
-    
+    ax.xaxis.set_major_locator(mdates.MonthLocator())
+    #ax.xaxis.set_major_formatter(mdates.DateFormatter('%m-%y'))
+    ax.xaxis.set_major_formatter(mdates.DateFormatter('%m-%Y'))
+    ax.tick_params(axis='x',rotation=35)
