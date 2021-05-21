@@ -60,6 +60,5 @@ ax: handle to current plot
 '''
 def modify_plot(ax,states_to_plot):
     ax.xaxis.set_major_locator(mdates.MonthLocator())
-    #ax.xaxis.set_major_formatter(mdates.DateFormatter('%m-%y'))
     ax.xaxis.set_major_formatter(mdates.DateFormatter('%m-%Y'))
     ax.tick_params(axis='x',rotation=35)
